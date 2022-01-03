@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "./example;example";
+
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+package example;
+
+service Echoer {
+  rpc Echo (EchoRequest) returns (EchoResponse) {
+    option (google.api.http) = {
+      post: "/echo"
+      body: "*"
+    };
+  }
+}
+
+message EchoRequest {
+  map<string, google.protobuf.StringValue> aMap = 1;
+}
+
+message EchoResponse {
+  map<string, google.protobuf.StringValue> aMap = 1;
+}
