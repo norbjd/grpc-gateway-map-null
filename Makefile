@@ -1,7 +1,7 @@
 .PHONY: get-protoc-bin
 get-protoc-bin:
 	go install \
-        github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+		github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
         google.golang.org/protobuf/cmd/protoc-gen-go \
         google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
@@ -9,7 +9,7 @@ get-protoc-bin:
 gen:
 	mkdir -p gen/go
 	protoc -I . -I proto/third_party/ \
-		--go_out=./gen/go --go-grpc_out=./gen/go --grpc-gateway_out ./gen/go \
+		--go_out=./gen/go --go-grpc_out=./gen/go --grpc-gateway_out=./gen/go \
 		proto/example.proto
 
 .PHONY: server
